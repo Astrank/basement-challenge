@@ -1,7 +1,8 @@
 import type {AppProps} from "next/app";
 import Head from "next/head";
-
-import "../css/global.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../styles/global.css";
 
 function App({Component, pageProps}: AppProps) {
   return (
@@ -10,7 +11,9 @@ function App({Component, pageProps}: AppProps) {
         <title>Basement Supply</title>
         <meta content="Coding challenge for basement.studio." name="description" />
       </Head>
+      <Header />
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 }

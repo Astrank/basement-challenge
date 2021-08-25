@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../assets/fonts/basement-grotesque.css";
+
+html,
+body,
+#__next {
+  height: 100%;
+  background: black;
+  color: white;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: 'Basement Grotesque', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.marquee {
+  animation: scroll-left 20s linear -1s infinite normal none running;
+}
+
+.dialog-overlay[data-state='open'],
+.dialog-content[data-state='open'] {
+  animation: slide-in 300ms ease-out;
+}
+
+.dialog-overlay[data-state='closed'],
+.dialog-content[data-state='closed'] {
+  animation: slide-out 300ms ease-in;
+}
+
+@keyframes scroll-left {
+    0% {
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+    100% {
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slide-in {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    -moz-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  to {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
