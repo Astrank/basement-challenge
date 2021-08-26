@@ -26,10 +26,6 @@ a {
   box-sizing: border-box;
 }
 
-.marquee {
-  animation: scroll-left 20s linear -1s infinite normal none running;
-}
-
 .dialog-overlay[data-state='open'],
 .dialog-content[data-state='open'] {
   animation: slide-in 300ms ease-out;
@@ -38,19 +34,6 @@ a {
 .dialog-overlay[data-state='closed'],
 .dialog-content[data-state='closed'] {
   animation: slide-out 300ms ease-in;
-}
-
-@keyframes scroll-left {
-    0% {
-        -moz-transform: translateX(100%);
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-    100% {
-        -moz-transform: translateX(-100%);
-        -webkit-transform: translateX(-100%);
-        transform: translateX(-100%);
-    }
 }
 
 @keyframes slide-in {
@@ -78,3 +61,33 @@ a {
     transform: translateX(100%);
   }
 }
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  --offset: 20vw;
+  --move-initial: calc(-25% + var(--offset));
+  --move-final: calc(-50% + var(--offset));
+}
+
+.marquee__inner {
+  width: fit-content;
+  display: flex;
+  position: relative;
+  transform: translate3d(var(--move-initial), 0, 0);
+  animation: marquee 10s linear infinite;
+}
+
+.marquee span {
+  white-space: pre;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate3d(var(--move-initial), 0, 0);
+    }
+
+    100% {
+        transform: translate3d(var(--move-final), 0, 0);
+    }
+} 
