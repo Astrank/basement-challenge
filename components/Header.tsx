@@ -72,7 +72,9 @@ const Header = () => {
                                 <RadioGroup.Item value={value} id={value}>
                                   <RadioGroup.Indicator />
                                 </RadioGroup.Item>
-                                <label className="cursor-pointer" htmlFor={value}>{value}</label>
+                                <label className="cursor-pointer" htmlFor={value}>
+                                  {value}
+                                </label>
                               </div>
                             ))}
                           </RadioGroup.Root>

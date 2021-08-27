@@ -58,7 +58,7 @@ const Home: NextPage<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const products: Product[] = await import("../product/mock.json").then(res => res.default);
+  const products: Product[] = await import("../product/mock.json").then((res) => res.default);
 
   return {
     props: {
