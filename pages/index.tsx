@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import type { Product } from "../product/types";
 import { useCart } from "../utils/Cart";
+import Marquee from "../components/Marquee";
 
 import header from "../assets/header.svg";
 import globe from "../assets/globe.svg";
@@ -15,17 +16,10 @@ const Home: NextPage<Props> = ({ products }) => {
 
   return (
     <div className="max-w-screen">
-      <div className="p-7">
+      <div className="p-4 md:p-7">
         <Image src={header} />
       </div>
-      <div className="marquee border-t border-b my-8 py-3 text-xl md:text-4xl whitespace-nowrap">
-        <div className="marquee__inner">
-          <span>A man can’t have enough base­ment. swag   —  </span>
-          <span>A man can’t have enough base­ment. swag   —   </span>
-          <span>A man can’t have enough base­ment. swag   —   </span>
-          <span>A man can’t have enough base­ment. swag   —   </span>
-        </div>
-      </div>
+      <Marquee text="A man can’t have enough base­ment. swag   —   " />
       <div className="flex flex-col gap-7 lg:grid lg:grid-cols-3 sm:px-7 sm:grid sm:grid-cols-2">
         {products &&
           products.map((product) => (

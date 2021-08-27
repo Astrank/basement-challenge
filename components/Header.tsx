@@ -15,7 +15,7 @@ const Header = () => {
   const { cart, total, addToCart, removeFromCart } = useCart();
 
   return (
-    <header className="flex flex-row items-center p-7 mx-auto justify-between">
+    <header className="flex flex-row items-center p-4 md:p-7 mx-auto justify-between">
       <div>
         <Link href="/">
           <a className="hidden md:block">
