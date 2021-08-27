@@ -28,12 +28,12 @@ a {
 
 .dialog-overlay[data-state='open'],
 .dialog-content[data-state='open'] {
-  animation: slide-in 300ms ease-out;
+  animation: slide-in 2s ease-out;
 }
 
 .dialog-overlay[data-state='closed'],
 .dialog-content[data-state='closed'] {
-  animation: slide-out 300ms ease-in;
+  animation: slide-out 2s ease-in;
 }
 
 @keyframes slide-in {

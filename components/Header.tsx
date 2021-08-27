@@ -37,13 +37,19 @@ const Header = () => {
         <Dialog.Overlay className="bg-black fixed inset-0 opacity-60" />
         <Dialog.Content className="bg-black flex flex-col ml-auto w-screen md:w-auto fixed right-0">
           <div className="px-7 flex flex-col md:border-l">
-            <Dialog.Close className="py-3 ml-auto border-none outline-none text-2xl">
+            <Dialog.Close
+              className="py-3 ml-auto border-none outline-none text-2xl"
+              aria-label="Close"
+            >
               <div>→ CLOSE</div>
             </Dialog.Close>
             <Image src={yourCart} />
             <div className="my-7 flex flex-col gap-4">
               {cart.map((item) => (
-                <div className="relative border p-4 flex flex-row gap-4">
+                <div
+                  className="relative border p-4 flex flex-row gap-4"
+                  key={item.product.id}
+                >
                   <div className="relative bg-gradient-to-t from-custom-grey to-black flex items-center">
                     <Image
                       src={item.product.image}
@@ -62,11 +68,14 @@ const Header = () => {
                     </div>
                     <div className="mt-auto">
                       {item.product.options.map((option) => (
-                        <div className="flex items-center">
+                        <div
+                          className="flex items-center"
+                          key={option.label}
+                        >
                           <p className="text-lg uppercase">{`${option.label}: `}</p>
                           <RadioGroup.Root className="flex gap-2 ml-2">
                             {option.values.map((value) => (
-                              <div>
+                              <div key={value}>
                                 <RadioGroup.Item value={value} id={value}>
                                   <RadioGroup.Indicator />
                                 </RadioGroup.Item>
@@ -84,9 +93,15 @@ const Header = () => {
                       <p className="text-lg">
                         QUANTITY:
                         <div className="ml-2 flex gap-2 inline-flex">
-                          <button onClick={() => removeFromCart(item.product.id)}>-</button>
+                          <button
+                            onClick={() => removeFromCart(item.product.id)}
+                          >
+                            -
+                          </button>
                           <span>{item.quantity}</span>
-                          <button onClick={() => addToCart(item.product)}>+</button>
+                          <button onClick={() => addToCart(item.product)}>
+                            +
+                          </button>
                         </div>
                       </p>
                       <p className="text-xl">{`PRICE: $${item.product.price}`}</p>
