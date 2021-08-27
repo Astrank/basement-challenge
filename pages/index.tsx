@@ -5,7 +5,6 @@ import { useCart } from "../utils/Cart";
 
 import header from "../assets/header.svg";
 import globe from "../assets/globe.svg";
-import { useState } from "react";
 
 interface Props {
   products: Product[];
@@ -13,6 +12,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({ products }) => {
   const { addToCart } = useCart();
+
   return (
     <div className="max-w-screen">
       <div className="p-7">
@@ -58,9 +58,7 @@ const Home: NextPage<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const products: Product[] = await import("../product/mock.json").then(
-    (res) => res.default
-  );
+  const products: Product[] = await import("../product/mock.json").then(res => res.default);
 
   return {
     props: {

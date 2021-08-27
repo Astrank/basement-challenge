@@ -13,6 +13,7 @@ import React from "react";
 
 const Header = () => {
   const { cart, total, addToCart, removeFromCart } = useCart();
+
   return (
     <header className="flex flex-row items-center p-7 mx-auto justify-between">
       <div>
@@ -46,10 +47,7 @@ const Header = () => {
             <Image src={yourCart} />
             <div className="my-7 flex flex-col gap-4">
               {cart.map((item) => (
-                <div
-                  className="relative border p-4 flex flex-row gap-4"
-                  key={item.product.id}
-                >
+                <div className="relative border p-4 flex flex-row gap-4" key={item.product.id}>
                   <div className="relative bg-gradient-to-t from-custom-grey to-black flex items-center">
                     <Image
                       src={item.product.image}
@@ -62,9 +60,7 @@ const Header = () => {
                   <div className="flex flex-col w-full">
                     <div>
                       <h1 className="uppercase text-xl">{item.product.name}</h1>
-                      <h2 className="text-lg text-gray-500">
-                        {item.product.description}
-                      </h2>
+                      <h2 className="text-lg text-gray-500">{item.product.description}</h2>
                     </div>
                     <div className="mt-auto">
                       {item.product.options.map((option) => (
@@ -76,12 +72,7 @@ const Header = () => {
                                 <RadioGroup.Item value={value} id={value}>
                                   <RadioGroup.Indicator />
                                 </RadioGroup.Item>
-                                <label
-                                  className="cursor-pointer"
-                                  htmlFor={value}
-                                >
-                                  {value}
-                                </label>
+                                <label className="cursor-pointer" htmlFor={value}>{value}</label>
                               </div>
                             ))}
                           </RadioGroup.Root>
@@ -90,15 +81,9 @@ const Header = () => {
                       <p className="text-lg">
                         QUANTITY:
                         <div className="ml-2 flex gap-2 inline-flex">
-                          <button
-                            onClick={() => removeFromCart(item.product.id)}
-                          >
-                            -
-                          </button>
+                          <button onClick={() => removeFromCart(item.product.id)}>-</button>
                           <span>{item.quantity}</span>
-                          <button onClick={() => addToCart(item.product)}>
-                            +
-                          </button>
+                          <button onClick={() => addToCart(item.product)}>+</button>
                         </div>
                       </p>
                       <p className="text-xl">{`PRICE: $${item.product.price}`}</p>
