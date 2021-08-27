@@ -8,5 +8,6 @@ export interface Product {
   image: string;
   price: number;
   name: string;
+  description: string;
   options: Option[];
 }

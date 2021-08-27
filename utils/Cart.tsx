@@ -1,25 +1,22 @@
-import React, { createContext, ReactNode, useContext } from "react";
+import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { Product } from "../product/types";
 
 interface CartItem {
   quantity: number;
-  optionSelected: string;
   product: Product;
 }
 
 type Cart = {
   cart: CartItem[];
   addToCart: (product: Product) => void;
-  removeOneFromCart: (product: Product) => void;
-  removeFromCart: (product: Product) => void;
+  removeFromCart: (id: string) => void;
   total: number;
 };
 
 const cartContextDefaultValues: Cart = {
   cart: [],
   addToCart: (product: Product) => {},
-  removeOneFromCart: (product: Product) => {},
-  removeFromCart: (product: Product) => {},
+  removeFromCart: (id: string) => {},
   total: 0,
 };
 
@@ -39,5 +36,50 @@ export const useCart = () => {
 };
 
 function useProvideCart() {
-  return cartContextDefaultValues;
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [total, setTotal] = useState<number>(0)
+  
+  useEffect(() => {
+    let newTotal = 0;
+    cart.map((item) => newTotal += (item.product.price * item.quantity));
+    setTotal(newTotal);
+  }, [cart]);
+
+  const addToCart = (product: Product) => {
+    if(cart.find(i => i.product.id == product.id)) {
+      cart.map(item => {
+        if (item.product.id == product.id) {
+          item.quantity++;
+          setCart([...cart]);
+          return;
+        }
+      })
+    }
+    else {
+      const cartItem: CartItem = {
+        quantity: 1,
+        product: product
+      } 
+  
+      setCart([...cart, cartItem]);
+    }
+
+  }
+
+  const removeFromCart = (id: string) => {
+    cart.map((item, index) => {
+      if (item.product.id == id) {
+        item.quantity > 1 ? item.quantity-- : cart.splice(index, 1)
+      }
+    })
+
+    setCart([...cart]);
+  }
+
+  return {
+    cart,
+    total,
+    addToCart,
+    removeFromCart,
+  }
 }

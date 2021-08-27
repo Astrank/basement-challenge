@@ -1,21 +1,24 @@
 import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import type { Product } from "../product/types";
+import { useCart } from "../utils/Cart";
 
 import header from "../assets/header.svg";
 import globe from "../assets/globe.svg";
+import { useState } from "react";
 
 interface Props {
   products: Product[];
 }
 
 const Home: NextPage<Props> = ({products}) => {
+  const { addToCart } = useCart();
   return (
     <div className="max-w-screen">
       <div className="p-7">
         <Image src={header} />
       </div>
-      <div className="marquee border-t border-b my-8 py-3 text-xl md:text-4xl whitespace-nowrap overflow-hidden">
+      <div className="marquee border-t border-b my-8 py-3 text-xl md:text-4xl whitespace-nowrap">
         <div className="marquee__inner">
           <span>A man can’t have enough base­ment. swag   —   </span>
           <span>A man can’t have enough base­ment. swag   —   </span>
@@ -36,7 +39,8 @@ const Home: NextPage<Props> = ({products}) => {
                   src={product.image}
                   width={512}
                 />
-                <div className="absolute inset-0 flex items-center justify-center cursor-pointer opacity-0 hover:opacity-100">
+                <div className="absolute inset-0 flex items-center justify-center cursor-pointer opacity-0 hover:opacity-100"
+                      onClick={() => addToCart(product)}>
                   <Image src={globe}/>
                 </div>
               </div>
