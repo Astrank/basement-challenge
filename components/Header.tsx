@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as RadioGroup from "@radix-ui/react-radio-group";
-import { useCart } from "../utils/Cart"
+import { useCart } from "../utils/Cart";
 
 import logo from "../assets/logo.svg";
 import logoSmall from "../assets/logo-small.svg";
@@ -68,10 +68,7 @@ const Header = () => {
                     </div>
                     <div className="mt-auto">
                       {item.product.options.map((option) => (
-                        <div
-                          className="flex items-center"
-                          key={option.label}
-                        >
+                        <div className="flex items-center" key={option.label}>
                           <p className="text-lg uppercase">{`${option.label}: `}</p>
                           <RadioGroup.Root className="flex gap-2 ml-2">
                             {option.values.map((value) => (

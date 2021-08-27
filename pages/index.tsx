@@ -11,7 +11,7 @@ interface Props {
   products: Product[];
 }
 
-const Home: NextPage<Props> = ({products}) => {
+const Home: NextPage<Props> = ({ products }) => {
   const { addToCart } = useCart();
   return (
     <div className="max-w-screen">
@@ -20,7 +20,7 @@ const Home: NextPage<Props> = ({products}) => {
       </div>
       <div className="marquee border-t border-b my-8 py-3 text-xl md:text-4xl whitespace-nowrap">
         <div className="marquee__inner">
-          <span>A man can’t have enough base­ment. swag   —   </span>
+          <span>A man can’t have enough base­ment. swag   —  </span>
           <span>A man can’t have enough base­ment. swag   —   </span>
           <span>A man can’t have enough base­ment. swag   —   </span>
           <span>A man can’t have enough base­ment. swag   —   </span>
@@ -39,9 +39,11 @@ const Home: NextPage<Props> = ({products}) => {
                   src={product.image}
                   width={512}
                 />
-                <div className="absolute inset-0 flex items-center justify-center cursor-pointer opacity-0 hover:opacity-100"
-                      onClick={() => addToCart(product)}>
-                  <Image src={globe}/>
+                <div
+                  className="absolute inset-0 flex items-center justify-center cursor-pointer opacity-0 hover:opacity-100"
+                  onClick={() => addToCart(product)}
+                >
+                  <Image src={globe} />
                 </div>
               </div>
               <div className="flex flex-row border-t-2 py-3 text-xl">
@@ -56,15 +58,15 @@ const Home: NextPage<Props> = ({products}) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const products: Product[] = await 
-    import('../product/mock.json')
-      .then(res => res.default);
+  const products: Product[] = await import("../product/mock.json").then(
+    (res) => res.default
+  );
 
   return {
     props: {
       products,
-    }
-  } 
-}
+    },
+  };
+};
 
 export default Home;
