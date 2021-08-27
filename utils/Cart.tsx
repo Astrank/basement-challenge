@@ -44,6 +44,23 @@ export const useCart = () => {
 function useProvideCart() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [total, setTotal] = useState<number>(0);
+  const [firstRender, setFirstRender] = useState(true);
+
+  useEffect(() => {
+    const cartLocalStorage = window.localStorage.getItem("cart");
+
+    if (cartLocalStorage) {
+      setCart(JSON.parse(cartLocalStorage));
+    }
+
+    setFirstRender(false);
+  }, []);
+
+  useEffect(() => {
+    if (!firstRender) {
+      window.localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart])
 
   useEffect(() => {
     let newTotal = 0;
@@ -52,14 +69,11 @@ function useProvideCart() {
   }, [cart]);
 
   const addToCart = (product: Product) => {
-    if (cart.find((i) => i.product.id == product.id)) {
-      cart.map((item) => {
-        if (item.product.id == product.id) {
-          item.quantity++;
-          setCart([...cart]);
-          return;
-        }
-      });
+    const matchProduct = cart.find((i) => i.product.id == product.id);
+    
+    if (matchProduct) {
+      matchProduct.quantity++;
+      setCart([...cart]);
     } else {
       const cartItem: CartItem = {
         quantity: 1,
