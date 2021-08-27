@@ -63,8 +63,10 @@ function useProvideCart() {
   }, [cart])
 
   useEffect(() => {
-    let newTotal = 0;
-    cart.map((item) => (newTotal += item.product.price * item.quantity));
+    const newTotal = cart.reduce((t, item) => {
+      return t + item.product.price * item.quantity;
+    }, 0)
+    
     setTotal(newTotal);
   }, [cart]);
 

@@ -88,7 +88,7 @@ const Header = () => {
                           <button onClick={() => addToCart(item.product)}>+</button>
                         </div>
                       </p>
-                      <p className="text-xl">{`PRICE: $${item.product.price}`}</p>
+                      <p className="text-xl">{`$${item.product.price}`}</p>
                     </div>
                   </div>
                 </div>
