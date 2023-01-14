@@ -4,6 +4,12 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 
 import { useCart } from "../utils/Cart";
+import logo from "../public/assets/logo.svg";
+import logoSmall from "../public/assets/logo-small.svg";
+import yourCart from "../public/assets/your-cart.svg";
+import checkout from "../public/assets/checkout.svg";
+import navIcons from "../public/assets/nav-icons.svg";
+import header from "../public/assets/header.svg";
 
 const Header = () => {
   const { cart, total, addToCart, removeFromCart } = useCart();
@@ -13,14 +19,14 @@ const Header = () => {
       <div className="flex items-center justify-between w-full gap-4">
         <div>
           <Link className="hidden md:block" href="/">
-            <Image alt="Basement" src="../public/assets/logo.svg" />
+            <Image alt="Basement" src={logo} />
           </Link>
           <Link className="block md:hidden" href="/">
-            <Image alt="Basement" src="../public/assets/logo-small.svg" />
+            <Image alt="Basement" src={logoSmall} />
           </Link>
         </div>
         <div className="hidden lg:block">
-          <Image alt="" src="../public/assets/nav-icons.svg" />
+          <Image alt="" src={navIcons} />
         </div>
         <Dialog.Root>
           <Dialog.Trigger className="border px-7 py-1 rounded-full ml-auto text-md md:text-lg md:ml-0 outline-none cursor-pointer">
@@ -35,7 +41,7 @@ const Header = () => {
               >
                 <div>→ CLOSE</div>
               </Dialog.Close>
-              <Image alt="Cart" src="../public/assets/your-cart.svg" />
+              <Image alt="Cart" src={yourCart} />
               <div className="my-7 flex flex-col gap-4">
                 {cart.map((item) => (
                   <div key={item.product.id} className="relative border p-4 flex flex-row gap-4">
@@ -89,14 +95,14 @@ const Header = () => {
             <div className="flex flex-col items-center justify-center divide-y px-7 md:border md:flex-row md:divide-x md:divide-y-0 md:px-0">
               <div className="p-7 w-full text-3xl">{`TOTAL: $${total}`}</div>
               <Link className="p-7 w-full flex justify-center" href="/">
-                <Image alt="Checkout" src="../public/assets/checkout.svg" />
+                <Image alt="Checkout" src={checkout} />
               </Link>
             </div>
           </Dialog.Content>
         </Dialog.Root>
       </div>
 
-      <Image alt="Header" className="mt-12" src="../public/assets/header.svg" />
+      <Image alt="Header" className="mt-12" src={header} />
     </header>
   );
 };
