@@ -3,8 +3,8 @@ import footer from "../assets/footer.svg";
 
 const Footer = () => {
   return (
-    <footer className="px-4 md:px-7 mt-8">
-      <Image src={footer} />
+    <footer className="p-4 md:p-7 mx-auto max-w-8xl mt-8">
+      <Image src={footer} alt="Footer" />
     </footer>
   );
 };
