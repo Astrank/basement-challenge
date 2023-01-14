@@ -10,6 +10,10 @@ const Marquee = ({ text }: MarqueeProps) => {
         <span>{text}</span>
         <span>{text}</span>
         <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
       </div>
     </div>
   );

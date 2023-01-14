@@ -7,7 +7,7 @@ import Marquee from "../components/Marquee";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import globe from "../assets/globe.svg";
+import globe from "../public/assets/globe.svg";
 
 interface Props {
   products: Product[];
